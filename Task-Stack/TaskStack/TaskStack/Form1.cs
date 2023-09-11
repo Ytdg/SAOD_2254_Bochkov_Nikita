@@ -49,8 +49,15 @@ namespace TaskStack
         {
             if (Int32.TryParse(tbxAddItem.Text, out var res))
             {
+                try
+                {
+                    stack.Push(res);
+                }
+                catch(Exception ex) {
+                    MessageBox.Show(ex.Message);
+                    Application.Restart();
 
-                stack.Push(res);
+                }
                 UpdateList();
 
             }
@@ -58,14 +65,31 @@ namespace TaskStack
 
         private void btnPop_Click(object sender, EventArgs e)
         {
-            tbxdeleteItem.Text = stack.Pop().ToString();
+            try
+            {
+                tbxdeleteItem.Text = stack.Pop().ToString();
+            }
+            catch(Exception ex) {
+                MessageBox.Show(ex.Message);
+                Application.Restart();
+            }
             UpdateList();
 
         }
 
         private void btnPeek_Click(object sender, EventArgs e)
         {
-            tbxGetItem.Text = stack.Peek().ToString();
+            try
+            {
+                tbxGetItem.Text = stack.Peek().ToString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                Application.Restart();
+              
+
+            }
         }
     }
 }

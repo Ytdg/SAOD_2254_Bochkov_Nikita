@@ -21,27 +21,24 @@ namespace TaskStack
         int currentIndex;
         public void Push(T val)
         {
-            if (Count == Capacity)
+            if (currentIndex == Capacity)
             {
                 throw new Exception("Стек заполнен!");
             }
-
             data[currentIndex] = val;
-            Count++;
             currentIndex++;
 
         }
 
         public T Pop()
         {
-            if (Count == 0)
+            if (currentIndex == 0)
             {
                 throw new Exception("Стек пуст!");
             }
 
             var item = data[currentIndex - 1];
             data[currentIndex - 1] = defaoultValue;
-            Count--;
             currentIndex--;
             return item;
 
@@ -50,7 +47,7 @@ namespace TaskStack
 
         public T Peek()
         {
-            if (Count == 0)
+            if (currentIndex == 0)
             {
                 throw new Exception("Стек пуст!");
             }
@@ -58,15 +55,16 @@ namespace TaskStack
             return data[currentIndex - 1];
 
         }
-        public List<T> Values()
+        public T[] Values()
         {
-
-            List<T> result = new List<T>();
+            T[] values=new T[currentIndex];
+            int c=0;
             for (int i = currentIndex - 1; i >= 0; i--)
             {
-                result.Add(data[i]);
+                values[c] = data[i];
+                c++;
             }
-            return result;
+            return values;
 
         }
 
