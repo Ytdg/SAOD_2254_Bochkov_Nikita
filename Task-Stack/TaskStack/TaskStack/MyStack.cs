@@ -11,12 +11,12 @@ namespace TaskStack
         public int Capacity { get; private set; }
         public int Count { get; private set; }
         T[] data;
-        T defaoultValue;
+      
         public MyStack(int capacity)
         {
             Capacity = capacity;
             data = new T[Capacity];
-            defaoultValue = data[0];
+           
         }
         int currentIndex;
         public void Push(T val)
@@ -38,7 +38,7 @@ namespace TaskStack
             }
 
             var item = data[currentIndex - 1];
-            data[currentIndex - 1] = defaoultValue;
+            data[currentIndex - 1] = default(T);
             currentIndex--;
             return item;
 
