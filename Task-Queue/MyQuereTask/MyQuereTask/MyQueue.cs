@@ -11,12 +11,11 @@ namespace MyQuereTask
         public int Capacity { get; private set; }
         public int Count { get; private set; }
         T[] data;
-        T defaultValue;
+        
         public MyQueue(int size)
         {
             Capacity = size;
             data = new T[Capacity];
-            defaultValue = default(T);
         }
         int indexOut;
         int indexIn;
@@ -50,7 +49,7 @@ namespace MyQuereTask
                 throw new Exception("Пусто!");
             }
             var value = data[indexOut];
-            data[indexOut] = defaultValue;
+            data[indexOut] = default(T);
             indexOut++;
             Count--;
             if (indexOut == Capacity) { indexOut = 0; }
