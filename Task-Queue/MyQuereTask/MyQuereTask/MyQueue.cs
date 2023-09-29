@@ -11,7 +11,7 @@ namespace MyQuereTask
         public int Capacity { get; private set; }
         public int Count { get; private set; }
         T[] data;
-        
+
         public MyQueue(int size)
         {
             Capacity = size;
@@ -58,38 +58,30 @@ namespace MyQuereTask
         public T[] Values()
         {
             T[] values = new T[Count];
-            int index = 0;
-            if (Count == 0)
+            int index = indexIn;
+            int indexValues = 0;
+            if (indexIn-1 < indexOut)
             {
-                indexOut = 0;
-                indexIn = 0;
+                index = index + Capacity;
             }
-            else
+            if (Count == 0) { indexIn = 0; indexOut = 0; index = 0; }
+            for (int i = indexOut; i < index; i++)
             {
-                if (indexOut < indexIn)
+                if (i >= Capacity)
                 {
-                    for (int i = indexOut; i < indexIn; i++)
-                    {
-                        values[index] = data[i];
-                        index++;
-                    }
+                    values[indexValues] = data[i - Capacity];
+                    indexValues++;
                 }
                 else
                 {
-                    for (int i = indexOut; i < Capacity; i++)
-                    {
-                        values[index] = data[i];
-                        index++;
-                    }
-                    for (int i = 0; i < indexIn; i++)
-                    {
-                        values[index] = data[i];
-                        index++;
-                    }
+                    values[indexValues] = data[i];
+                    indexValues++;
                 }
             }
             return values;
 
+
         }
+
     }
 }

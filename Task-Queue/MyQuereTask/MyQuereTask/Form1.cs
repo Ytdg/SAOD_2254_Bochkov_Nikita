@@ -53,7 +53,7 @@ namespace MyQuereTask
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
-                    Application.Restart();
+       
                 }
                 UpdateList();
             }
@@ -69,7 +69,7 @@ namespace MyQuereTask
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-                Application.Restart();
+              
             }
             UpdateList();
         }
@@ -80,7 +80,7 @@ namespace MyQuereTask
             {
                 tbxGetItem.Text = queu.Peek().ToString();
             }
-            catch (Exception ex) { MessageBox.Show(ex.Message); Application.Restart(); }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
 
         }
 
