@@ -104,15 +104,16 @@ namespace TaskMyList
         {
 
             size++;
-            if (last == null) { last = new ListNode(value: value); return true; }
-            if (first == null)
+            if (first == null) { first = new ListNode(value: value); return true; }
+            if (last == null)
             {
-                    first = new ListNode(value: value);
-                    last.prev = first;
-                    first.next = last;
-                    return true;
+                first= new ListNode(value: value,next:first);
+                
+                last=first.next; 
+                last.prev = first;
+                return true;
             }
-            var new_item = new ListNode(value: value);
+            var new_item = new ListNode(value:value);
             first.prev = new_item;
             new_item.next = first;
             first = new_item;
