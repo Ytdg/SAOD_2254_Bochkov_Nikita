@@ -44,12 +44,12 @@ namespace MyVecktorTask
         {
             get
             {
-                if (index >= Size) throw new Exception("Не корректрный индекс");
+                if (Math.Abs( index) >= Size) throw new Exception("Не корректрный индекс");
                 return _data[index];
             }
             set
             {
-                if (index >= Size) throw new Exception("Не корректрный индекс");
+                if (Math.Abs(index) >= Size) throw new Exception("Не корректрный индекс");
                 _data[index] = value;
             }
         }
